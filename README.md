@@ -1,7 +1,7 @@
 # Sororitree
 
 ## Acknowledgements
-* Handlebars
+* Handlebars/HBS
 * Body Parser
 * Method Override
 * Mongoose
