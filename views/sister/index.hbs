@@ -1,11 +1,11 @@
-<h2>show list of all sisters</h2>
+<h2>All Sisters</h2>
 {{#if sisters}}
-    sisters 5ever
+    <ul>
     {{#each sisters as |sister|}}
-        <a href="/sisters/{{sister.name}}">{{sister.name}}</a>
+        <li><a href="/sisters/{{sister.name}}">{{sister.name}}</a></li>
     {{/each}}
-
+    </ul>
     {{#else}}
-    No sisters
+        There are currently no sisters listed.
     {{/else}}
 {{/if}}

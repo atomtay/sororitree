@@ -1,1 +1,13 @@
-<h2>show members of one family</h2>
+{{#if family}}
+    <h2>Members of the {{family.name}} Family</h2>
+
+    <ul>
+    {{#each family.members as |sister|}}
+        <li><a href="/sisters/{{sister.name}}">{{sister.name}}</a></li>
+    {{/each}}
+    </ul>
+
+    <p>
+        <a href="/families/{{family.name}}/edit">Edit Family name</a>
+    </p>
+{{/if}}

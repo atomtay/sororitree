@@ -1,1 +1,12 @@
-<h2>Show details on one sister</h2>
+<h2>Meet {{sister.name}}</h2>
+
+{{#if sister}}
+<ul>
+    <li>Name: {{sister.name}}</li>
+    <li>Year: {{sister.year}}</li>
+    <li>Pledge Class: {{sister.pledgeclass}}</li>
+</ul>
+<p>
+    <a href="/sisters/{{sister.name}}/edit">Edit sister info</a>
+</p>
+{{/if}}
