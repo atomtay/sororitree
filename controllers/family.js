@@ -2,7 +2,9 @@ const { Family } = require('../models/index')
 
 module.exports = {
     index: function(req,res){
-        res.render("family/index")
+        Family.find({}).then(families => {
+            res.render("family/index", {families})
+        })
     },
     show: function(req,res){
         res.render("family/show")

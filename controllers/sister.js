@@ -2,7 +2,9 @@ const { Sister } = require('../models/index')
 
 module.exports = {
     index: function(req,res){
-        res.render("sister/index")
+        Sister.find({}).then(sisters => {
+            res.render("sister/index", {sisters})
+        })
     },
     new: function(req,res){
         res.render("sister/new")

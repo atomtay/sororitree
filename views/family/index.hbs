@@ -1,1 +1,11 @@
 <h2>show list of all families</h2>
+{{#if families}}
+    there are fams, fam!
+    {{#each families as |family|}}
+        <a href="/families/{{family.name}}">{{family.name}}</a>
+    {{/each}}
+
+    {{#else}}
+    No families to show for
+    {{/else}}
+{{/if}}
