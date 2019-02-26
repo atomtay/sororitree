@@ -1,3 +1,28 @@
 {{#if sister}}
-<h2>Edit Details about {{sister.name}}</h2>
+<h2>Update {{sister.name}}</h2>
+<form method="POST" action="/sisters/{{sister.id}}?_method=PUT">
+    <p>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+    </p>
+
+    <p>
+        <label for="year">Year:</label>
+        <input type="text" name="year" id="year">
+    </p>
+
+    <p>
+        <label for="year">Pledge class:</label>
+            <select name="pledgeclass">
+            <option value="alphaomicron">Alpha Omicron</option>
+            <option value="alphapi">Alpha Pi</option>
+            <option value="alphasigma">Alpha Sigma</option>
+            <option value="alphatau">Alpha Tau</option>
+        </select>
+    </p>
+
+     <p>
+        <input type="submit" value="Save" class="btn btn-primary">
+    </p>
+</form>
 {{/if}}

@@ -30,8 +30,21 @@ module.exports = {
         })
     },
     update: function(req,res){
-        //redirect back to updated sister's /sisters/:id page
-        res.send("Hello world")
+        const { name, year, pledgeclass } = req.body
+        Sister.findOneAndUpdate(req.params.name,{
+            name,
+            year,
+            pledgeclass
+        },
+        {
+            runValidators: true
+        })
+        .then(sister =>{
+            res.render("sister/show", { sister })
+        })
+        .catch(err => {
+            console.log(err);
+        })
     },
     delete: function(req,res){
         //remove from database

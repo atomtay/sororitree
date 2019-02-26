@@ -14,30 +14,28 @@ module.exports = {
         Family.create({
             name
         }).then(family => {
-            res.redirect(`/families/${name}`)
+            res.redirect(`/families/${family._id}`)
         })
     },
     show: function(req,res){
-        Family.findOne({ name: req.params.id }).then(family => {
+        Family.findById( req.params.id ).then(family => {
             res.render("family/show", { family })
         })
     },
     edit: function(req,res){
-        Family.findOne({ name: req.params.id }).then(family => {
+        Family.findById( req.params.id ).then(family => {
             res.render("family/edit", { family })
         })
     },
     update: function(req,res){
         const { name } = req.body
-        Family.findOneAndUpdate(req.params.name, {
-            name
-        },
-        {
-            runValidators: true
-        }).then(family => {
-            res.redirect(`/families/${name}`)
+        Family.findByIdAndUpdate(
+            req.params.id,
+            {name}
+        ).then(family => {
+            res.redirect(`/families/${req.params.id}`)
         }).catch(err => {
             console.log(err);
-        });
+        })
     },
 }

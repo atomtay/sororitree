@@ -3,11 +3,11 @@
 
     <ul>
     {{#each family.members as |sister|}}
-        <li><a href="/sisters/{{sister.name}}">{{sister.name}}</a></li>
+        <li><a href="/sisters/{{sister.id}}">{{sister.name}}</a></li>
     {{/each}}
     </ul>
 
     <p>
-        <a href="/families/{{family.name}}/edit">Edit Family name</a>
+        <a href="/families/{{family.id}}/edit">Edit Family name</a>
     </p>
 {{/if}}
