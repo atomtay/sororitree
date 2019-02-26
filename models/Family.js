@@ -3,7 +3,7 @@ const Sister = require('./Sister')
 
 const FamilySchema = new mongoose.Schema({
     name: String,
-    members: [Sister]
+    members: []
 })
 
 module.exports = FamilySchema

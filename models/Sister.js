@@ -2,11 +2,7 @@ const mongoose = require('mongoose')
 
 const SisterSchema = new mongoose.Schema({
     name: String,
-    year: Number,
-    pledgeclass: String,
-    family: String,
-    big: mongoose.Schema.Types.ObjectId,
-    littles: [mongoose.Schema.Types.ObjectId]
+    family: String
 })
 
 module.exports = SisterSchema

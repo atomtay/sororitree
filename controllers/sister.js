@@ -1,3 +1,4 @@
+const { Family } = require("../models/index")
 const { Sister } = require('../models/index')
 
 module.exports = {
@@ -11,7 +12,10 @@ module.exports = {
     },
     create: function(req,res){
         const { name, year, pledgeclass } = req.body
+        const idVal = name.charAt(0)
         Sister.create({
+            _id: idVal,
+            idVal,
             name,
             year,
             pledgeclass
@@ -46,8 +50,11 @@ module.exports = {
     },
     delete: function(req,res){
         Sister.findByIdAndDelete( req.params.id ).then((sister) =>{
-            console.log(sister)
-            res.redirect("/sisters")
+            const family = sister.family
+            const sisterId = sister._id
+            Family.findOneAndUpdate({name: family}, {$pull: {members: {_id: sisterId}}}).then(() => {
+                res.redirect("/sisters")
+            })
         })
     }
 }
