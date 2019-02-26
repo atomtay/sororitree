@@ -28,7 +28,16 @@ module.exports = {
         })
     },
     update: function(req,res){
-        //redirect back to that family's /family/:id page
-        res.send("Hello world")
+        const { name } = req.body
+        Family.findOneAndUpdate(req.params.name, {
+            name
+        },
+        {
+            runValidators: true
+        }).then(family => {
+            res.redirect(`/families/${name}`)
+        }).catch(err => {
+            console.log(err);
+        });
     },
 }

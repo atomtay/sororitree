@@ -1,6 +1,8 @@
 {{#if family}}
 <h2>Update the {{family.name}} Family</h2>
-<form method="POST" action="/">
-
+<form method="POST" action="/families/{{family/name}}?_method=PUT">
+    <label for="name">New Name:</label>
+    <input type="text" name="name" id="name">
+    <input type="submit" value="Save" class="btn btn-primary">
 </form>
 {{/if}}
