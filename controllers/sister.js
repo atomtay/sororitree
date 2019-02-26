@@ -45,7 +45,9 @@ module.exports = {
         })
     },
     delete: function(req,res){
-        //remove from database
-        res.redirect("/sisters")
+        Sister.findByIdAndDelete( req.params.id ).then((sister) =>{
+            console.log(sister)
+            res.redirect("/sisters")
+        })
     }
 }
