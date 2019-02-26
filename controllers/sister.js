@@ -16,31 +16,29 @@ module.exports = {
             year,
             pledgeclass
         }).then(sister => {
-            res.redirect(`/sisters/${name}`)
+            res.redirect(`/sisters/${sister.id}`)
         })
     },
     show: function(req,res){
-        Sister.findOne({ name: req.params.id }).then(sister => {
+        Sister.findById( req.params.id ).then(sister => {
             res.render("sister/show", { sister })
         })
     },
     edit: function(req,res){
-        Sister.findOne({ name: req.params.id }).then(sister => {
+        Sister.findById( req.params.id ).then(sister => {
             res.render("sister/edit", { sister })
         })
     },
     update: function(req,res){
         const { name, year, pledgeclass } = req.body
-        Sister.findOneAndUpdate(req.params.name,{
-            name,
-            year,
-            pledgeclass
-        },
-        {
-            runValidators: true
-        })
-        .then(sister =>{
-            res.render("sister/show", { sister })
+        Sister.findByIdAndUpdate(
+            req.params.id,
+            {
+                name,
+                year,
+                pledgeclass
+            }).then(() =>{
+            res.redirect(`/sisters/${req.params.id}`)
         })
         .catch(err => {
             console.log(err);

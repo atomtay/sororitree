@@ -32,7 +32,7 @@ module.exports = {
         Family.findByIdAndUpdate(
             req.params.id,
             {name}
-        ).then(family => {
+        ).then(() => {
             res.redirect(`/families/${req.params.id}`)
         }).catch(err => {
             console.log(err);
