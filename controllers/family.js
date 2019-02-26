@@ -6,6 +6,17 @@ module.exports = {
             res.render("family/index", { families })
         })
     },
+    new: function(req,res){
+        res.render("family/new")
+    },
+    create: function(req,res){
+        const { name } = req.body
+        Family.create({
+            name
+        }).then(family => {
+            res.redirect(`/families/${name}`)
+        })
+    },
     show: function(req,res){
         Family.findOne({ name: req.params.id }).then(family => {
             res.render("family/show", { family })
