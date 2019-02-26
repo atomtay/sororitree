@@ -1,0 +1,26 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin-top: 25px;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+}
+
+nav a{
+    margin: 15px 15px;
+}
+
+h1{
+    font-family: 'Cookie', cursive;
+    font-size: 50px;
+    text-align: center;
+}
+
+h2{
+    font-size: 36px;
+}
