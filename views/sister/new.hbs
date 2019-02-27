@@ -23,7 +23,12 @@
     </p>
 
     <p>
-        <input type="file" name="image" accept="image/*">
+        <label for="family">Family</label>
+        <select name="family">
+            {{#each families as |family|}}
+                <option value="{{family.name}}">{{family.name}}</p>
+            {{/each}}
+        </select>
     </p>
     
     <p>

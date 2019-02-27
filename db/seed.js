@@ -11,9 +11,7 @@ Family.deleteMany({}).then(
                 lastname: "Mehring",
                 family: family.name
             }).then(sister => {
-                console.log("Sister info: " + sister)
                 family.members.push(sister)
-                console.log("Family info: " + family)
             })
         ]).then(() => {
             family.save(err => console.log(err))

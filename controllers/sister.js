@@ -1,5 +1,4 @@
-const { Family } = require("../models/index")
-const { Sister } = require('../models/index')
+const { Family, Sister } = require("../models/index")
 
 module.exports = {
     index: function(req,res){
@@ -8,18 +7,28 @@ module.exports = {
         })
     },
     new: function(req,res){
-        res.render("sister/new")
+        Family.find({}).then( families => {
+            res.render("sister/new", { families })
+        })
     },
     create: function(req,res){
-        const { firstname, lastname, year, pledgeclass,image } = req.body
-        Sister.create({
-            firstname,
-            lastname,
-            year,
-            pledgeclass,
-            image
-        }).then(sister => {
-            res.redirect(`/sisters/${sister.id}`)
+        const { firstname, lastname, year, pledgeclass, family } = req.body
+        Family.findOne({ name: family}).then(sisfamily => {
+            console.log(sisfamily)
+            Promise.all([
+                Sister.create({
+                    firstname,
+                    lastname,
+                    year,
+                    pledgeclass,
+                    sisfamily
+                }).then(sister => {
+                    sisfamily.members.push(sister)
+                })
+            ]).then(() => {
+                sisfamily.save(err => console.log(err))
+                res.redirect("/")
+            })
         })
     },
     show: function(req,res){
