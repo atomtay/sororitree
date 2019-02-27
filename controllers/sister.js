@@ -7,8 +7,10 @@ module.exports = {
         })
     },
     new: function(req,res){
-        Family.find({}).then( families => {
-            res.render("sister/new", { families })
+        Sister.find({}).then(sisters => {
+            Family.find({}).then( families => {
+                res.render("sister/new", { sisters, families })
+            })
         })
     },
     create: function(req,res){
