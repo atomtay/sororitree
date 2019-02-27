@@ -5,7 +5,12 @@
     <li>Year: {{sister.year}}</li>
     <li>Pledge Class: {{sister.pledgeclass}}</li>
     <li>Family: {{sister.family}}</li>
+    {{#if big}}
     <li>Big: <a href="/sisters/{{big.id}}">{{big.firstname}} {{big.lastname}}</a></li>
+    {{/if}}
+    {{#if little}}
+    <li>Little: <a href="/sisters/{{little.id}}">{{little.firstname}} {{little.lastname}}</a></li>
+    {{/if}}
 </ul>
 <p>
     <a href="/sisters/{{sister.id}}/edit">Edit sister info</a>

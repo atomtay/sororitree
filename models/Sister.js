@@ -9,6 +9,10 @@ const SisterSchema = new mongoose.Schema({
     big: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Sister'
+    }],
+    littles: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Sister'
     }]
 })
 

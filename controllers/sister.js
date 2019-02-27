@@ -15,28 +15,38 @@ module.exports = {
     },
     create: function(req,res){
         const { firstname, lastname, year, pledgeclass, family, big } = req.body
-        Family.findOne({ name: family}).then(updatedFamily => {
-            Promise.all([
-                Sister.create({
-                    firstname,
-                    lastname,
-                    year,
-                    pledgeclass,
-                    family,
-                    big
-                }).then(sister => {
-                    updatedFamily.members.push(sister)
-                    res.redirect(`/sisters/${sister._id}`)
+        Family.findOne({ name: family}).then((familyToUpdate) => {
+            Sister.create({
+                firstname,
+                lastname,
+                year,
+                pledgeclass,
+                family,
+                big
+            }).then(littlesister => {
+                Sister.findByIdAndUpdate(littlesister['big'], {$push: {littles: littlesister['_id']}}).then(() => {
+                familyToUpdate.members.push(littlesister)
+                res.redirect(`/sisters/${littlesister._id}`)
+                familyToUpdate.save(err => console.log(err))
                 })
-            ]).then(() => {
-                updatedFamily.save(err => console.log(err))
             })
+
+
+            // .then((sister) => {
+            //     console.log(sister)
+            //     familyToUpdate.members.push(sister)
+            //     res.redirect(`/sisters/${sister._id}`)
+            //     familyToUpdate.save(err => console.log(err))
+            // })
         })
     },
+
     show: function(req,res){
         Sister.findById( req.params.id ).then(sister => {
             Sister.findById(sister.big).then(big => {
-                res.render("sister/show", { sister, big })
+                Sister.findById(sister.littles).then( little => {
+                    res.render("sister/show", { sister, big, little })
+                })
             })
         })
     },
