@@ -53,6 +53,7 @@ module.exports = {
     edit: function(req,res){
         Sister.findById( req.params.id ).then(sister => {
             Family.find({}).then( families => {
+                console.log(req.params.id)
                 res.render("sister/edit", { sister,families })
             })
         })
@@ -65,8 +66,9 @@ module.exports = {
                 name,
                 year,
                 pledgeclass
-            }).then(() =>{
-            res.redirect(`/sisters/${req.params.id}`)
+            }).then((sister) =>{
+                console.log(req.params.id)
+                res.redirect(`/sisters/${req.params.id}`)
         })
         .catch(err => {
             console.log(err);
