@@ -8,6 +8,7 @@ Family.deleteMany({}).then(
         Promise.all([
             Sister.create({
                 firstname: "Morgan",
+                lastname: "Mehring",
                 family: family.name
             }).then(sister => {
                 console.log("Sister info: " + sister)

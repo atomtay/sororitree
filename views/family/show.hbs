@@ -1,7 +1,7 @@
     <h2>Members of the {{family.name}} Family</h2>
     <ul>
     {{#each family.members as |sister|}}
-        <li><a href="/sisters/{{sister._id}}">{{sister.firstname}}</a></li>
+        <li><a href="/sisters/{{sister._id}}">{{sister.firstname}} {{sister.lastname}}</a></li>
     {{/each}}
     </ul>
 
