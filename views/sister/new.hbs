@@ -1,37 +1,33 @@
-<h2>Insert a new sister</h2>
+<main><h2>Add a Sister</h2>
 
-<form method="POST" action="/sisters">
-    <p>
-        <label for="name">Name:</label>
-        <input type="text" name="firstname" id="firstname">
-        <input type="text" name="lastname" id="lastname">
-    </p>
+<form method="POST" action="/sisters" class="new-sister">
+    <label for="name">Name:</label>
+    <p class="first-name">First Name</p>
+    <p class="last-name">Last Name</p>
+    <input type="text" name="firstname" id="first-name" class="first-name">
+    <input type="text" name="lastname" id="last-name" class="last-name">
 
-    <p>
-        <label for="year">Year:</label>
-        <input type="text" name="year" id="year">
-    </p>
+    <label for="year">Graduation:</label>
+    <input type="month" name="year" id="year">
+        
+    <label for="year">Pledge class:</label>
+    <select name="pledgeclass">
+        <option value="Alpha Omicron">Alpha Omicron</option>
+        <option value="Alpha Pi">Alpha Pi</option>
+        <option value="Alpha Sigma">Alpha Sigma</option>
+        <option value="Alpha Tau">Alpha Tau</option>
+    </select>
+    
 
-    <p>
-        <label for="year">Pledge class:</label>
-            <select name="pledgeclass">
-            <option value="alphaomicron">Alpha Omicron</option>
-            <option value="alphapi">Alpha Pi</option>
-            <option value="alphasigma">Alpha Sigma</option>
-            <option value="alphatau">Alpha Tau</option>
-        </select>
-    </p>
-
-    <p>
-        <label for="family">Family</label>
+    <label for="family">Family</label>
         <select name="family">
             {{#each families as |family|}}
                 <option value="{{family.name}}">{{family.name}}</p>
             {{/each}}
         </select>
-    </p>
     
     <p>
-        <input type="submit" value="Save" class="btn btn-primary">
+        <input type="submit" value="Submit">
     </p>
 </form>
+</main>

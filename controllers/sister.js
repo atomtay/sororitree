@@ -13,21 +13,20 @@ module.exports = {
     },
     create: function(req,res){
         const { firstname, lastname, year, pledgeclass, family } = req.body
-        Family.findOne({ name: family}).then(sisfamily => {
-            console.log(sisfamily)
+        Family.findOne({ name: family}).then(updatedFamily => {
             Promise.all([
                 Sister.create({
                     firstname,
                     lastname,
                     year,
                     pledgeclass,
-                    sisfamily
+                    family
                 }).then(sister => {
-                    sisfamily.members.push(sister)
+                    updatedFamily.members.push(sister)
+                    res.redirect(`/sisters/${sister._id}`)
                 })
             ]).then(() => {
-                sisfamily.save(err => console.log(err))
-                res.redirect("/")
+                updatedFamily.save(err => console.log(err))
             })
         })
     },
@@ -38,7 +37,9 @@ module.exports = {
     },
     edit: function(req,res){
         Sister.findById( req.params.id ).then(sister => {
-            res.render("sister/edit", { sister })
+            Family.find({}).then( families => {
+                res.render("sister/edit", { sister,families })
+            })
         })
     },
     update: function(req,res){
