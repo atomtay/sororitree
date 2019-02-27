@@ -3,7 +3,11 @@ const Sister = require('./Sister')
 
 const FamilySchema = new mongoose.Schema({
     name: String,
-    members: []
+    members: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Sister'
+    }]
 })
+
 
 module.exports = FamilySchema

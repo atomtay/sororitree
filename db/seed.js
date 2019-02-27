@@ -1,5 +1,4 @@
-const { Family } = require("../models/index")
-const { Sister } = require("../models/index")
+const { Family, Sister } = require("../models/index")
     
 Family.deleteMany({}).then(
     Sister.deleteMany({}).then(function(){
@@ -8,24 +7,12 @@ Family.deleteMany({}).then(
     }).then(family => {
         Promise.all([
             Sister.create({
-                name: "Morgan",
+                firstname: "Morgan",
                 family: family.name
             }).then(sister => {
-                family.members.push(sister._id)
-            }),
-
-            Sister.create({
-                name: "Alison",
-                family: family.name
-            }).then(sister => {
-                family.members.push(sister._id)
-            }),
-            
-            Sister.create({
-                name: "Annabelle",
-                family: family.name
-            }).then(sister => {
-                family.members.push(sister._id)
+                console.log("Sister info: " + sister)
+                family.members.push(sister)
+                console.log("Family info: " + family)
             })
         ]).then(() => {
             family.save(err => console.log(err))
