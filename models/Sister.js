@@ -6,7 +6,10 @@ const SisterSchema = new mongoose.Schema({
     family: String,
     year: String,
     pledgeclass: String,
-    image: String
+    big: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Sister'
+    }]
 })
 
 module.exports = SisterSchema

@@ -14,7 +14,7 @@ module.exports = {
         })
     },
     create: function(req,res){
-        const { firstname, lastname, year, pledgeclass, family } = req.body
+        const { firstname, lastname, year, pledgeclass, family, big } = req.body
         Family.findOne({ name: family}).then(updatedFamily => {
             Promise.all([
                 Sister.create({
@@ -22,7 +22,8 @@ module.exports = {
                     lastname,
                     year,
                     pledgeclass,
-                    family
+                    family,
+                    big
                 }).then(sister => {
                     updatedFamily.members.push(sister)
                     res.redirect(`/sisters/${sister._id}`)
@@ -34,7 +35,9 @@ module.exports = {
     },
     show: function(req,res){
         Sister.findById( req.params.id ).then(sister => {
-            res.render("sister/show", { sister })
+            Sister.findById(sister.big).then(big => {
+                res.render("sister/show", { sister, big })
+            })
         })
     },
     edit: function(req,res){
