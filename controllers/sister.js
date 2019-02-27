@@ -2,7 +2,7 @@ const { Family, Sister } = require("../models/index")
 
 module.exports = {
     index: function(req,res){
-        Sister.find({}).then(sisters => {
+        Sister.find({}, null, {sort: {lastname: 1}}).then(sisters => {
             res.render("sister/index", { sisters })
         })
     },
@@ -47,6 +47,7 @@ module.exports = {
             })
         })
     },
+
     update: function(req,res){
         const { name, year, pledgeclass } = req.body
         Sister.findByIdAndUpdate(req.params.id, {name,year,pledgeclass}).
@@ -57,6 +58,7 @@ module.exports = {
             console.log(err);
         })
     },
+
     delete: function(req,res){
         Sister.findByIdAndDelete( req.params.id ).then((sister) =>{
             Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}}).then(() => {

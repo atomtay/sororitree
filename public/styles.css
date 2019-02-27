@@ -9,15 +9,21 @@ main{
 nav{
     display: flex;
     flex-direction: row;
-    background: #ffc1cc;
+    background-image: linear-gradient(#ffc1cc, #e5adb7);
 }
 
 nav a{
-    margin: 15px 15px;
-    color: #850018;
+    padding: 0 15px;
+    margin: 15px 10px;
+    color: #5b4549;
     text-decoration: none;
     font-size: 20px;
     font-family: sans-serif;
+}
+
+nav a:hover{
+  color: #443336;
+  font-style: italic;
 }
 
 h1{
@@ -48,7 +54,7 @@ label{
     font-family: sans-serif;
 }
 
-.new-sister{
+.new-sister, .edit-sister{
     display: grid;
     grid-template-rows: repeat(10,1fr);
     grid-template-columns: 1fr 1fr;

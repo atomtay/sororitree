@@ -1,7 +1,6 @@
 const express = require("express")
 const methodOverride = require("method-override")
 const parser = require("body-parser")
-
 const app = express()
 
 app.set("view engine", "hbs");
