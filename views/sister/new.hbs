@@ -1,10 +1,14 @@
 <main><h2>Add a Sister</h2>
 <form method="POST" action="/sisters" class="new-sister">
     <label for="name">Name:</label>
-    <p class="first-name">First Name</p>
-    <p class="last-name">Last Name</p>
-    <input type="text" name="firstname" id="first-name" class="first-name">
-    <input type="text" name="lastname" id="last-name" class="last-name">
+    <section class="first-name">
+        <p>First Name</p>
+        <input type="text" name="firstname" id="first-name" class="first-name">
+    </section>
+    <section class="last-name">
+        <p>Last Name</p>
+        <input type="text" name="lastname" id="last-name">
+    </section>
 
     <label for="year">Graduation:</label>
     <input type="month" name="year" id="year">
@@ -27,6 +31,7 @@
     
     <label for="big">Big</label>
         <select name="big">
+            <option value=""></option>
             {{#each sisters as |sister|}}
                 <option value="{{sister.id}}">{{sister.firstname}} {{sister.lastname}}</p>
             {{/each}}

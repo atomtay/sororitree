@@ -12,7 +12,6 @@ app.use(express.urlencoded({extended: true}))
 app.use(parser.urlencoded({extended: true}))
 app.use(require("./routes/index"))
 
-
 app.listen(app.get("port"), () => {
     console.log(`✅ PORT: ${app.get("port")} 🌟`)
 })

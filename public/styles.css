@@ -36,6 +36,10 @@ h2{
     font-size: 36px;
 }
 
+h3{
+    font-size: 20px;
+}
+
 .sisters, .families{
     margin-top: 15px;
 }
@@ -48,6 +52,10 @@ form{
     margin-top: 10px;
 }
 
+form p{
+    color: gray;
+}
+
 label{
     font-weight: bold;
     font-size: 20px;
@@ -56,8 +64,11 @@ label{
 
 .new-sister, .edit-sister{
     display: grid;
-    grid-template-rows: repeat(10,1fr);
+    grid-template-rows: repeat(9,1fr);
     grid-template-columns: 1fr 1fr;
+    background:#f7efef;
+    padding: 20px;
+    border-radius: 3px;
 }
 
 select, input {

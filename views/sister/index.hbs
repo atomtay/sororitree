@@ -1,16 +1,15 @@
 <main>
     <h2>Chapter Roster</h2>
     <div class="sisters">
-    
-        {{#if sisters}}
-            <ul>
+
             {{#each sisters as |sister|}}
                 <li><a href="/sisters/{{sister.id}}">{{sister.lastname}}, {{sister.firstname}}</a></li>
             {{/each}}
-            </ul>
-            {{#else}}
-                <p>There are currently no sisters listed. Why not <a href="/sisters/new">add one</a>?</p>
-            {{/else}}
+        
+
+    
+        {{#if sisters}}
+            
         {{/if}}
     </div>
 </main>

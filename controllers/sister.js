@@ -3,7 +3,9 @@ const { Family, Sister } = require("../models/index")
 module.exports = {
     index: function(req,res){
         Sister.find({}, null, {sort: {lastname: 1}}).then(sisters => {
-            res.render("sister/index", { sisters })
+            Family.find({}).then(families => {
+                res.render("sister/index", { sisters, families })
+            })
         })
     },
 
