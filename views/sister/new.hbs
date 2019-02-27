@@ -3,7 +3,8 @@
 <form method="POST" action="/sisters">
     <p>
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="firstname" id="firstname">
+        <input type="text" name="lastname" id="lastname">
     </p>
 
     <p>
@@ -19,6 +20,10 @@
             <option value="alphasigma">Alpha Sigma</option>
             <option value="alphatau">Alpha Tau</option>
         </select>
+    </p>
+
+    <p>
+        <input type="file" name="image" accept="image/*">
     </p>
     
     <p>

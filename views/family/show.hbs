@@ -1,8 +1,6 @@
-{{#if family}}
     <h2>Members of the {{family.name}} Family</h2>
-
     <ul>
-    {{#each family.members as |sister|}}
+    {{#each sistersList as |sister|}}
         <li><a href="/sisters/{{sister._id}}">{{sister.name}}</a></li>
     {{/each}}
     </ul>
@@ -10,4 +8,3 @@
     <p>
         <a href="/families/{{family.id}}/edit">Edit Family name</a>
     </p>
-{{/if}}

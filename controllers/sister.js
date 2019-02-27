@@ -11,14 +11,13 @@ module.exports = {
         res.render("sister/new")
     },
     create: function(req,res){
-        const { name, year, pledgeclass } = req.body
-        const idVal = name.charAt(0)
+        const { firstname, lastname, year, pledgeclass,image } = req.body
         Sister.create({
-            _id: idVal,
-            idVal,
-            name,
+            firstname,
+            lastname,
             year,
-            pledgeclass
+            pledgeclass,
+            image
         }).then(sister => {
             res.redirect(`/sisters/${sister.id}`)
         })

@@ -19,8 +19,21 @@ module.exports = {
         })
     },
     show: function(req,res){
-        Family.findById( req.params.id ).then(family => {
-            res.render("family/show", { family })
+        let sistersList = []
+        Family.findById( req.params.id )
+        .then(family => {
+            for( i = 0; i < family.members.length; i++){
+                Sister.findById(family['members'][i]['_id'])
+                .then(sister => {
+                    sistersList.push(sister)
+                    console.log(sistersList)
+                })
+            }
+            console.log("End of FOR LOOP")
+        }).then((result) => {
+            console.log("Final result")
+            console.log(sistersList)
+            res.render("family/show", { result })
         })
     },
     edit: function(req,res){
@@ -36,12 +49,8 @@ module.exports = {
             {new: true}
         ).then((family) => {
             for (i = 0; i < family['members'].length; i++){
-                console.log(family['members'][i]["_id"])
-                console.log(family.name)
-                Sister.findByIdAndUpdate(family['members'][i]["_id"], { family: family.name }, {new: true}).then((sister) => {
-                    console.log(sister)
+                Sister.findByIdAndUpdate(family['members'][i]["_id"], { family: family.name }, {new: true}).then(() => {
                 })
-                //family['members'][i]['family'] = family['name']
             }
             res.redirect(`/families/${req.params.id}`)
         }).catch(err => {

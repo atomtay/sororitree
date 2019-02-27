@@ -1,8 +1,12 @@
 const mongoose = require('mongoose')
 
 const SisterSchema = new mongoose.Schema({
-    name: String,
-    family: String
+        firstname: String,
+        lastname: String,
+    family: String,
+    year: String,
+    pledgeclass: String,
+    image: String
 })
 
 module.exports = SisterSchema

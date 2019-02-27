@@ -2,6 +2,7 @@
 {{#if families}}
     <ul>
        {{#each families as |family|}}
+            {{family.members}}
             <li><a href="/families/{{family.id}}">{{family.name}}</a></li>
         {{/each}} 
     </ul>
