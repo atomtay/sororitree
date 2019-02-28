@@ -21,7 +21,7 @@ module.exports = {
         const { firstname, lastname, year, pledgeclass, family, big } = req.body
         Family.findOne({ name: family}).then((familyToUpdate) => {
             Sister.findById(big).then((big) => {
-                if (big.littles.length >= 2){
+                if (big.littles && big.littles.length >= 2){
                     const message = true
                     Sister.find({}).then(sisters => {
                         Family.find({}).then( families => {
@@ -75,7 +75,13 @@ module.exports = {
 
     delete: function(req,res){
         Sister.findByIdAndDelete( req.params.id ).then(sister =>{
-            Sister.findByIdAndUpdate(sister.big, {littles: sister.littles}).then(() => {
+            Sister.findByIdAndUpdate(sister.big, {$pull: {littles: {$in: sister.id}}}).then((newBig) => {
+                
+                if (sister.littles.length > 0){
+                    for(i = 0; i < sister.littles.length; i++){
+                        newBig.littles.push(sister.littles[i])
+                    }
+                }
                 Sister.findByIdAndUpdate(sister.littles, {big: sister.big}).then(() => {
                     Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}}).then(() => {
                         res.redirect("/sisters")
