@@ -19,6 +19,7 @@ module.exports = {
 
     create: function(req,res){
         const { firstname, lastname, year, pledgeclass, family, big } = req.body
+        console.log(big == true)
         Family.findOne({ name: family}).then((familyToUpdate) => {
             Sister.create({firstname,lastname,year,pledgeclass,family,big})
             .then(littlesister => {
@@ -62,9 +63,13 @@ module.exports = {
     },
 
     delete: function(req,res){
-        Sister.findByIdAndDelete( req.params.id ).then((sister) =>{
-            Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}}).then(() => {
-                res.redirect("/sisters")
+        Sister.findByIdAndDelete( req.params.id ).then(sister =>{
+            Sister.findByIdAndUpdate(sister.big, {littles: sister.littles}).then(() => {
+                Sister.findByIdAndUpdate(sister.littles, {big: sister.big}).then(() => {
+                    Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}}).then(() => {
+                        res.redirect("/sisters")
+                    })
+                })
             })
         })
     }
