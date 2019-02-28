@@ -59,17 +59,15 @@ h3{
 
 form{
     margin-top: 10px;
-}
-
-form p{
-    color: gray;
-}
-.new-sister, .edit-sister{
     display: flex;
     flex-direction: column;
     background:#f7efef;
     padding: 20px;
     border-radius: 3px;
+}
+
+form p{
+    color: gray;
 }
 
 label{
