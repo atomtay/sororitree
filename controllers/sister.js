@@ -21,14 +21,22 @@ module.exports = {
         const { firstname, lastname, year, pledgeclass, family, big } = req.body
         console.log(big == true)
         Family.findOne({ name: family}).then((familyToUpdate) => {
-            Sister.create({firstname,lastname,year,pledgeclass,family,big})
-            .then(littlesister => {
-                Sister.findByIdAndUpdate(littlesister['big'], {$push: {littles: littlesister['_id']}})
-                .then(() => {
-                    familyToUpdate.members.push(littlesister)
-                    res.redirect(`/sisters/${littlesister._id}`)
-                    familyToUpdate.save(err => console.log(err))
-                })
+            Sister.findById(big).then((big) => {
+                if (big.littles.length >= 2){
+                    console.log("trouble!")
+                    res.redirect("/")
+                }
+                else{
+                    Sister.create({firstname,lastname,year,pledgeclass,family,big})
+                    .then(littlesister => {
+                        Sister.findByIdAndUpdate(littlesister['big'], {$push: {littles: littlesister['_id']}})
+                        .then(() => {
+                            familyToUpdate.members.push(littlesister)
+                            res.redirect(`/sisters/${littlesister._id}`)
+                            familyToUpdate.save(err => console.log(err))
+                        })
+                    })
+                }
             })
         })
     },
