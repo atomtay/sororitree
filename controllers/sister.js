@@ -35,9 +35,9 @@ module.exports = {
     show: function(req,res){
         Sister.findById( req.params.id ).then(sister => {
             Sister.findById(sister.big).then(big => {
-                Sister.findById(sister.littles).then( little => {
-                    res.render("sister/show", { sister, big, little })
-                })
+                Sister.find({_id: {$in: sister.littles}}).then(littles => {
+                     res.render("sister/show", { sister, big, littles })
+                 });
             })
         })
     },

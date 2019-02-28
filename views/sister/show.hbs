@@ -1,22 +1,27 @@
-<main><h2>Meet {{sister.firstname}}</h2>
-{{#if sister}}
-<ul>
-    <li>Name: {{sister.firstname}} {{sister.lastname}}</li>
-    <li>Year: {{sister.year}}</li>
-    <li>Pledge Class: {{sister.pledgeclass}}</li>
-    <li>Family: {{sister.family}}</li>
-    {{#if big}}
-    <li>Big: <a href="/sisters/{{big.id}}">{{big.firstname}} {{big.lastname}}</a></li>
+<main>
+    <h2>Meet {{sister.firstname}}</h2>
+    {{#if sister}}
+    <ul>
+        <li>Name: {{sister.firstname}} {{sister.lastname}}</li>
+        <li>Year: {{sister.year}}</li>
+        <li>Pledge Class: {{sister.pledgeclass}}</li>
+        <li>Family: {{sister.family}}</li>
+        {{#if big}}
+        <li>Big: <a href="/sisters/{{big.id}}">{{big.firstname}} {{big.lastname}}</a></li>
+        {{/if}}
+        {{#if littles}}
+        <li>Little(s):
+            {{#each littles as |little|}}
+                <a href="/sisters/{{little.id}}">{{little.firstname}} {{little.lastname}}</a>
+            {{/each}}
+        </li>
+        {{/if}}
+    </ul>
+    <p>
+        <a href="/sisters/{{sister.id}}/edit">Edit sister info</a>
+    </p>
+    <form action="/sisters/{{sister.id}}?_method=DELETE" method="post" class="d-inline">
+        <input type="submit" value="Delete" class="btn btn-danger">
+    </form>
     {{/if}}
-    {{#if little}}
-    <li>Little: <a href="/sisters/{{little.id}}">{{little.firstname}} {{little.lastname}}</a></li>
-    {{/if}}
-</ul>
-<p>
-    <a href="/sisters/{{sister.id}}/edit">Edit sister info</a>
-</p>
-<form action="/sisters/{{sister.id}}?_method=DELETE" method="post" class="d-inline">
-      <input type="submit" value="Delete" class="btn btn-danger">
-</form>
-{{/if}}
 </main>
