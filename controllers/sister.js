@@ -19,12 +19,15 @@ module.exports = {
 
     create: function(req,res){
         const { firstname, lastname, year, pledgeclass, family, big } = req.body
-        console.log(big == true)
         Family.findOne({ name: family}).then((familyToUpdate) => {
             Sister.findById(big).then((big) => {
                 if (big.littles.length >= 2){
-                    console.log("Sorry, sisters can only have up to two littles.")
-                    res.redirect("/sisters/new")
+                    const message = true
+                    Sister.find({}).then(sisters => {
+                        Family.find({}).then( families => {
+                            res.render("sister/new", { sisters, families,message })
+                        })
+                    })
                 }
                 else{
                     Sister.create({firstname,lastname,year,pledgeclass,family,big})
@@ -62,8 +65,7 @@ module.exports = {
     update: function(req,res){
         const { firstname, lastname, year, pledgeclass } = req.body
         Sister.findByIdAndUpdate(req.params.id, {firstname,lastname,year,pledgeclass},{new: true}).
-        then((sister) =>{
-            console.log(sister)
+        then(() =>{
             res.redirect(`/sisters/${req.params.id}`)
         })
         .catch(err => {
