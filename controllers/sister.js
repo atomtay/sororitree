@@ -22,8 +22,12 @@ module.exports = {
         Family.findOne({ name: family}).then((familyToUpdate) => {
             Sister.findById(big).then((big) => {
                 if (big.littles.length >= 2){
-                    console.log("Sorry, sisters can only have up to two littles.")
-                    res.redirect("/sisters/new")
+                    const message = true
+                    Sister.find({}).then(sisters => {
+                        Family.find({}).then( families => {
+                            res.render("sister/new", { sisters, families,message })
+                        })
+                    })
                 }
                 else{
                     Sister.create({firstname,lastname,year,pledgeclass,family,big})
