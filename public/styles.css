@@ -30,12 +30,6 @@ nav a:hover{
   font-style: italic;
 }
 
-.sister-options{
-    display: flex;
-    flex-direction: row;
-    margin: 20px 0;
-}
-
 /* Font styles */
 h1{
     font-family: 'Cookie', cursive;
@@ -45,25 +39,30 @@ h1{
 
 h2{
     font-size: 36px;
+    margin-bottom: 20px;
 }
 
 h3{
     font-size: 20px;
+    font-style: italic;
 }
 
 /* SHOW Families and Sisters */
 
-.sisters, .families{
-    margin-top: 15px;
-}
+li{
+    margin-bottom: 10px;
+} 
 
-.sisters li, .families li{
-    margin: 10px 10px;
+.sister-options, .family-options{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
 }
 
 /* EDIT/CREATE Families and Sisters forms */
 
 .edit-sister, .new-sister, .edit-family, .new-family{
+    width: 360px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;

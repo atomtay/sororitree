@@ -1,8 +1,10 @@
 <main>
     <h2>Chapter Roster</h2>
     <div class="sisters">
-        {{#each sisters as |sister|}}
-            <li><a href="/sisters/{{sister.id}}">{{sister.lastname}}, {{sister.firstname}}</a></li>
-        {{/each}}
+        <ul>
+            {{#each sisters as |sister|}}
+                <li><a href="/sisters/{{sister.id}}">{{sister.lastname}}, {{sister.firstname}}</a></li>
+            {{/each}}
+        </ul>
     </div>
 </main>

@@ -1,6 +1,6 @@
 <main>
-    <h2>Meet {{sister.firstname}}</h2>
     {{#if sister}}
+    <h2>Meet {{sister.firstname}}</h2>
     <ul>
         <li>Name: {{sister.firstname}} {{sister.lastname}}</li>
         <li>Year: {{sister.year}}</li>
@@ -26,5 +26,9 @@
             <input type="submit" value="Edit">
         </form>
     </section>
+
+    {{#else}}
+        No sister!
+    {{/else}}
     {{/if}}
 </main>
