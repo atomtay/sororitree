@@ -1,34 +1,38 @@
 <main>
     <h2>Update {{sister.firstname}}'s Information</h2>
 
-<form action="/sisters/{{sister.id}}?_method=PUT" method="post" class="edit-sister">
-    <label for="name">Name:</label>
-    <p class="first-name">First Name</p>
-    <p class="last-name">Last Name</p>
-    <input type="text" name="firstname" id="first-name" class="first-name" value="{{sister.firstname}}"> 
-    <input type="text" name="lastname" id="last-name" class="last-name" value="{{sister.lastname}}">
+    <form action="/sisters/{{sister.id}}?_method=PUT" method="post" class="edit-sister">
+        <label for="name">Name</label>
+        <section class="name">
+            <section class="first-name">
+                <p>First Name</p>
+                <input type="text" name="firstname" id="first-name" class="first-name" value="{{sister.firstname}}">
+            </section>
+            <section class="last-name">
+                <p>Last Name</p>
+                <input type="text" name="lastname" id="last-name" value="{{sister.lastname}}">
+            </section>
+        </section>
 
-    <label for="year">Graduation:</label>
-    <input type="month" name="year" id="year" value="{{sister.year}}">
+        <label for="year">Graduation:</label>
+        <input type="month" name="year" id="year" value="{{sister.year}}">
         
-    <label for="year">Pledge class:</label>
-    <select name="pledgeclass" value="{{sister.pledgeclass}}">
-        <option value="Alpha Omicron">Alpha Omicron</option>
-        <option value="Alpha Pi">Alpha Pi</option>
-        <option value="Alpha Sigma">Alpha Sigma</option>
-        <option value="Alpha Tau">Alpha Tau</option>
-    </select>
+        <label for="year">Pledge class:</label>
+        <select name="pledgeclass" value="{{sister.pledgeclass}}">
+            <option value="Alpha Omicron">Alpha Omicron</option>
+            <option value="Alpha Pi">Alpha Pi</option>
+            <option value="Alpha Sigma">Alpha Sigma</option>
+            <option value="Alpha Tau">Alpha Tau</option>
+        </select>
     
-
-    <label for="family">Family</label>
+        <label for="family">Family</label>
         <select name="family">
             {{#each families as |family|}}
                 <option value="{{family.name}}">{{family.name}}</p>
             {{/each}}
         </select>
-    
-    <p>
-        <input type="submit" value="Submit">
+        
+        <button type="submit">Submit</button>
     </p>
 </form>
 </main>
