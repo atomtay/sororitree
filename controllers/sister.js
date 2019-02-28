@@ -74,9 +74,10 @@ module.exports = {
     delete: function(req,res){
         Sister.findByIdAndDelete( req.params.id ).then(sister =>{
             Sister.findByIdAndUpdate(sister.big, {littles: sister.littles}).then(() => {
-                Sister.findByIdAndUpdate(sister.littles[0], {big: sister.big}).then(() => {
-                        Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}})
-                        .then(() => {res.redirect("/sisters")})
+                Sister.findByIdAndUpdate(sister.littles, {big: sister.big}).then(() => {
+                    Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}}).then(() => {
+                        res.redirect("/sisters")
+                    })
                 })
             })
         })
