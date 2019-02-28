@@ -19,11 +19,11 @@
     </ul>
 
     <section class="sister-options">
-        <form action="/sisters/{{sister.id}}?_method=DELETE" method="post" class="d-inline">
-            <input type="submit" value="Delete">
-        </form>
         <form action="/sisters/{{sister.id}}/edit">
             <input type="submit" value="Edit">
+        </form>
+        <form action="/sisters/{{sister.id}}?_method=DELETE" method="post" class="d-inline">
+            <input type="submit" value="Delete">
         </form>
     </section>
 

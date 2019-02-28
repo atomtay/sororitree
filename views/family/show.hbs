@@ -8,11 +8,11 @@
         </ul>
         
         <section class="family-options">
-        <form action="/families/{{family.id}}?_method=DELETE" method="post" class="d-inline">
-            <input type="submit" value="Delete">
-        </form>
-        <form action="/families/{{family.id}}/edit">
-            <input type="submit" value="Edit">
-        </form>
+            <form action="/families/{{family.id}}/edit">
+                <input type="submit" value="Edit">
+            </form>
+            <form action="/families/{{family.id}}?_method=DELETE" method="post" class="d-inline">
+                <input type="submit" value="Delete">
+            </form>
     </section>
     </main>
