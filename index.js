@@ -2,8 +2,6 @@ const express = require("express")
 const methodOverride = require("method-override")
 const parser = require("body-parser")
 const exphbs = require('express-handlebars');
-const flash = require("connect-flash");
-const session = require("express-session")
 const hbs = exphbs.create({extname: '.hbs'});
 const app = express()
 
@@ -13,14 +11,7 @@ app.set('views', __dirname + '/views/');
 app.set('view engine', hbs.extname);
 app.set("port", process.env.PORT || 1874)
 
-app.use(flash());
-app.use(
-    session({
-      secret: "IN IIKE",
-      saveUninitialized: true,
-      resave: false
-    })
-  );
+
 app.use(express.static("public"))
 app.use(methodOverride("_method"))
 app.use(express.urlencoded({extended: true}))
