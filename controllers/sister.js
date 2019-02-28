@@ -52,10 +52,11 @@ module.exports = {
     },
 
     update: function(req,res){
-        const { name, year, pledgeclass } = req.body
-        Sister.findByIdAndUpdate(req.params.id, {name,year,pledgeclass}).
-        then(() =>{
-                res.redirect(`/sisters/${req.params.id}`)
+        const { firstname, lastname, year, pledgeclass } = req.body
+        Sister.findByIdAndUpdate(req.params.id, {firstname,lastname,year,pledgeclass},{new: true}).
+        then((sister) =>{
+            console.log(sister)
+            res.redirect(`/sisters/${req.params.id}`)
         })
         .catch(err => {
             console.log(err);
