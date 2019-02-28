@@ -17,11 +17,14 @@
         </li>
         {{/if}}
     </ul>
-    <p>
-        <a href="/sisters/{{sister.id}}/edit">Edit sister info</a>
-    </p>
-    <form action="/sisters/{{sister.id}}?_method=DELETE" method="post" class="d-inline">
-        <input type="submit" value="Delete" class="btn btn-danger">
-    </form>
+
+    <section class="sister-options">
+        <form action="/sisters/{{sister.id}}?_method=DELETE" method="post" class="d-inline">
+            <input type="submit" value="Delete">
+        </form>
+        <form action="/sisters/{{sister.id}}/edit">
+            <input type="submit" value="Edit">
+        </form>
+    </section>
     {{/if}}
 </main>

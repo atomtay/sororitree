@@ -30,6 +30,12 @@ nav a:hover{
   font-style: italic;
 }
 
+.sister-options{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+}
+
 /* Font styles */
 h1{
     font-family: 'Cookie', cursive;
@@ -57,7 +63,7 @@ h3{
 
 /* EDIT/CREATE Families and Sisters forms */
 
-form{
+.edit-sister, .new-sister, .edit-family, .new-family{
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -96,7 +102,7 @@ select, input {
     margin-left: 5px;
 }
 
-button{
+button, input[value="Delete"], input[value="Edit"]{
     align-self: center;
     width: 100px;
     height: 45px;
@@ -105,4 +111,9 @@ button{
     font-size: 20px;
     border: none;
     border-radius: 3px;
+    text-decoration: none;
+}
+
+input[value="Delete"], input[value="Edit"]{
+    margin: 0 10px;
 }
