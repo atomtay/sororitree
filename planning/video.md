@@ -1,4 +1,5 @@
 # Video plan
+[Link to video](https://youtu.be/fnMTDSBUOHw)
 * A description and demo of your app
     * Create Alison and Annabelle Sister records
     * Delete Alison to show relationship between Morgan and me
