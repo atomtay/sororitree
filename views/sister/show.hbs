@@ -9,11 +9,9 @@
         {{#if big}}
         <li>Big: <a href="/sisters/{{big.id}}">{{big.firstname}} {{big.lastname}}</a></li>
         {{/if}}
-        {{#if littles}}
-        <li>Little(s):
-            {{#each littles as |little|}}
-                <a href="/sisters/{{little.id}}">{{little.firstname}} {{little.lastname}}</a>
-            {{/each}}
+        {{#if little}}
+        <li>Little:
+            <a href="/sisters/{{little.id}}">{{little.firstname}} {{little.lastname}}</a>
         </li>
         {{/if}}
     </ul>
