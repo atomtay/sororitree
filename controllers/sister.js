@@ -21,7 +21,7 @@ module.exports = {
         const { firstname, lastname, year, pledgeclass, family, big } = req.body
         Family.findOne({ name: family}).then((familyToUpdate) => {
             Sister.findById(big).then((big) => {
-                if (big.littles && big.littles.length >= 1){
+                if (big.little && big.little.length >= 1){
                     const message = true
                     Sister.find({}).then(sisters => {
                         Family.find({}).then( families => {
@@ -32,7 +32,7 @@ module.exports = {
                 else{
                     Sister.create({firstname,lastname,year,pledgeclass,family,big})
                     .then(littlesister => {
-                        Sister.findByIdAndUpdate(littlesister['big'], {$push: {littles: littlesister['_id']}})
+                        Sister.findByIdAndUpdate(littlesister['big'], {$push: {little: littlesister['_id']}})
                         .then(() => {
                             familyToUpdate.members.push(littlesister)
                             res.redirect(`/sisters/${littlesister._id}`)
@@ -47,8 +47,8 @@ module.exports = {
     show: function(req,res){
         Sister.findById( req.params.id ).then(sister => {
             Sister.findById(sister.big).then(big => {
-                Sister.find({_id: {$in: sister.littles}}).then(littles => {
-                     res.render("sister/show", { sister, big, littles })
+                Sister.findById(sister.little).then(little => {
+                     res.render("sister/show", { sister, big, little })
                  });
             })
         })
@@ -76,11 +76,14 @@ module.exports = {
     delete: function(req,res){
         Sister.findByIdAndDelete( req.params.id )
         .then(sister => {
-            Sister.findByIdAndUpdate(sister.big, {$set: {littles: sister.littles, big:sister.big}})
+            Sister.findByIdAndUpdate(sister.big, {little: sister.little})
             .then(() => {
-                Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}})
+                Sister.findByIdAndUpdate(sister.little, {big: sister.big})
                 .then(() => {
-                    res.redirect("/sisters")
+                    Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}})
+                    .then(() => {
+                        res.redirect("/sisters")
+                    })
                 })
             })
         })
