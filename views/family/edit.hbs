@@ -1,5 +1,4 @@
 <main>
-    {{#if family}}
     <h2>Update the {{family.name}} Family</h2>
     <form method="POST" action="/families/{{family.id}}?_method=PUT" class="edit-family">
         <label for="name">Name</label>
@@ -7,5 +6,4 @@
 
         <button type="submit">Submit</button>
     </form>
-    {{/if}}
 </main>

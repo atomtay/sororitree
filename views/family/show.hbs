@@ -3,7 +3,7 @@
         
         <ul>
             {{#each family.members as |sister|}}
-                <li><a href="/sisters/{{sister._id}}">{{sister.firstname}} {{sister.lastname}}</a></li>
+                <li><a href="/sisters/{{sister._id}}">{{sister.firstname}} !{{sister.lastname}}</a></li>
             {{/each}}
         </ul>
         
@@ -11,8 +11,5 @@
             <form action="/families/{{family.id}}/edit">
                 <input type="submit" value="Edit">
             </form>
-            <form action="/families/{{family.id}}?_method=DELETE" method="post" class="d-inline">
-                <input type="submit" value="Delete">
-            </form>
-    </section>
+        </section>
     </main>

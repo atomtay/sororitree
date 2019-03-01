@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({extname: '.hbs'});
 const app = express()
 
-app.engine('handlebars', hbs.engine);
+app.engine('handlebars', hbs.engine)
 
 app.set('views', __dirname + '/views/');
 app.set('view engine', hbs.extname);

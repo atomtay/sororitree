@@ -11,16 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "connect-flash": "^0.1.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "express-session": "^1.15.6",
     "handlebars": "^4.1.0",
-    "handlebars-intl": "^1.1.2",
     "hbs": "^4.0.2",
     "method-override": "^3.0.0",
-    "mongoose": "^5.4.15",
-    "mongoose-url-slugs": "^1.0.2",
-    "multer": "^1.4.1"
+    "mongoose": "^5.4.15"
   }
 }

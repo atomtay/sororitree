@@ -1,7 +1,7 @@
 <main>
     <h2>Add a Sister</h2>
     {{#if message}}
-        Sorry, sisters can only have up to two littles at any time.
+        Sorry, sisters can only have one little at any time.
     {{/if}}
     <form method="POST" action="/sisters" class="new-sister">
         <label for="name">Name</label>
@@ -27,7 +27,6 @@
             <option value="Alpha Tau">Alpha Tau</option>
         </select>
         
-
         <label for="family">Family</label>
         <select name="family">
             {{#each families as |family|}}

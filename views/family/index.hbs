@@ -1,16 +1,10 @@
 <main>
     <h2>All Families</h2>
     <div class="families">
-        {{#if families}}
-            <ul>
-                {{#each families as |family|}}
-                    <li><a href="/families/{{family.id}}">{{family.name}}</a></li>
-                {{/each}} 
-            </ul>
-            
-            {{#else}}
-                No families to show for! Why not <a href="/families/new">start one yourself</a>?
-            {{/else}}
-        {{/if}}
+        <ul>
+            {{#each families as |family|}}
+                <li><a href="/families/{{family.id}}">{{family.name}}</a></li>
+            {{/each}} 
+        </ul>
     </div>
 </main>

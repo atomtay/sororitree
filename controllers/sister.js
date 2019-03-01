@@ -3,8 +3,7 @@ const { Family, Sister } = require("../models/index")
 module.exports = {
     index: function(req,res){
         Sister.find({}, null, {sort: {lastname: 1}}).then(sisters => {
-            Family.find({}).then(families => {
-                res.render("sister/index", { sisters, families })
+            res.render("sister/index", {sisters
             })
         })
     },
@@ -50,6 +49,7 @@ module.exports = {
             else {
                 Sister.create({firstname,lastname,year,pledgeclass,family})
                 .then((littlesister) => {
+                    console.log(familyToUpdate)
                     familyToUpdate.members.push(littlesister)
                     res.redirect(`/sisters/${littlesister._id}`)
                 })
@@ -93,8 +93,10 @@ module.exports = {
             .then(() => {
                 Sister.findByIdAndUpdate(sister.little, {big: sister.big})
                 .then(() => {
-                    Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {_id: sister._id}}})
-                    .then(() => {
+                    console.log(sister.id)
+                    Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {id: sister.id}}}, {new: true})
+                    .then((family) => {
+                        console.log(family)
                         res.redirect("/sisters")
                     })
                 })

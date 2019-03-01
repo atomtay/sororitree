@@ -1,5 +1,4 @@
 <main>
-    {{#if sister}}
     <h2>Meet {{sister.firstname}}</h2>
     <ul>
         <li>Name: {{sister.firstname}} {{sister.lastname}}</li>
@@ -7,12 +6,10 @@
         <li>Pledge Class: {{sister.pledgeclass}}</li>
         <li>Family: {{sister.family}}</li>
         {{#if big}}
-        <li>Big: <a href="/sisters/{{big.id}}">{{big.firstname}} {{big.lastname}}</a></li>
+            <li>Big: <a href="/sisters/{{big.id}}">{{big.firstname}} {{big.lastname}}</a></li>
         {{/if}}
         {{#if little}}
-        <li>Little:
-            <a href="/sisters/{{little.id}}">{{little.firstname}} {{little.lastname}}</a>
-        </li>
+        <li>Little: <a href="/sisters/{{little.id}}">{{little.firstname}} {{little.lastname}}</a></li>
         {{/if}}
     </ul>
 
@@ -24,9 +21,4 @@
             <input type="submit" value="Delete">
         </form>
     </section>
-
-    {{#else}}
-        No sister!
-    {{/else}}
-    {{/if}}
 </main>
