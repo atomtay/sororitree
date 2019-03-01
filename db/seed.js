@@ -10,7 +10,8 @@ Family.deleteMany({}).then(
                 firstname: "Morgan",
                 lastname: "Mehring",
                 family: family.name,
-                pledgeclass: "Alpha Omicron"
+                pledgeclass: "Alpha Omicron",
+                year: "2015-05"
             }).then(sister => {
                 family.members.push(sister)
             })
@@ -27,7 +28,8 @@ Family.deleteMany({}).then(
                 firstname: "Leah",
                 lastname: "Kesselman",
                 family: family.name,
-                pledgeclass: "Alpha Sigma"
+                pledgeclass: "Alpha Sigma",
+                year: "2017-05"
             }).then(sister => {
                 family.members.push(sister)
             })
@@ -44,7 +46,8 @@ Family.deleteMany({}).then(
                 firstname: "Paige",
                 lastname: "Garlington",
                 family: family.name,
-                pledgeclass: "Alpha Sigma"
+                pledgeclass: "Alpha Sigma",
+                year: "2017-05"
             }).then(sister => {
                 family.members.push(sister)
             })
@@ -61,7 +64,8 @@ Family.deleteMany({}).then(
                 firstname: "Julia",
                 lastname: "Kent",
                 family: family.name,
-                pledgeclass: "Alpha Rho"
+                pledgeclass: "Alpha Rho",
+                year: "2016-05"
             }).then(sister => {
                 family.members.push(sister)
             })
@@ -78,7 +82,8 @@ Family.deleteMany({}).then(
                 firstname: "Brooke",
                 lastname: "Brehm",
                 family: family.name,
-                pledgeclass: "Alpha Pi"
+                pledgeclass: "Alpha Pi",
+                year: "2016-05"
             }).then(sister => {
                 family.members.push(sister)
             })
@@ -95,7 +100,8 @@ Family.deleteMany({}).then(
                 firstname: "Yuting",
                 lastname: "Yang",
                 family: family.name,
-                pledgeclass: "Alpha Pi"
+                pledgeclass: "Alpha Pi",
+                year: "2016-05"
             }).then(sister => {
                 family.members.push(sister)
             })
