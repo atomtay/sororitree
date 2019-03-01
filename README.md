@@ -4,11 +4,12 @@ A web-based GUI for organizing sorority sisters and keeping track of Big/Little 
 ## Installation
 To access the public-facing version of this application (currently containing my alma mater's chapter), simply visit [sororitree.herokuapp.com](https://sororitree.herokuapp.com/). Alternatively, you can download and host your own local version by following these command line prompts:
 
-`git clone https://github.com/annabelle-t-taylor/sororitree.git`
-`cd sororitree`
-`npm install`
-`node db/seed.js`
-`node index.js`
+```git clone https://github.com/annabelle-t-taylor/sororitree.git
+cd sororitree
+npm install
+node db/seed.js
+node index.js
+```
 
 And open *localhost:1874* in your web browser of choice. If you'd like to host your local version on another port, you can edit that on line 12 of **/index.js**.
 
