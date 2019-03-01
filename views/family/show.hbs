@@ -3,7 +3,7 @@
         
         <ul>
             {{#each family.members as |sister|}}
-                <li><a href="/sisters/{{sister._id}}">{{sister.firstname}} !{{sister.lastname}}</a></li>
+                <li><a href="/sisters/{{sister._id}}">{{sister.firstname}} {{sister.lastname}}</a></li>
             {{/each}}
         </ul>
         
