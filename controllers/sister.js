@@ -20,27 +20,40 @@ module.exports = {
     create: function(req,res){
         const { firstname, lastname, year, pledgeclass, family, big } = req.body
         Family.findOne({ name: family}).then((familyToUpdate) => {
-            Sister.findById(big).then((big) => {
-                if (big.little && big.little.length >= 1){
-                    const message = true
-                    Sister.find({}).then(sisters => {
-                        Family.find({}).then( families => {
-                            res.render("sister/new", { sisters, families,message })
+            //Handling any n+1st sister where a Big is assigned
+            if (big){
+                Sister.findById(big).then((big) => {
+                    //Disallow creating a second little for any existing big
+                    if (big.little && big.little.length >= 1){
+                        const message = true
+                        Sister.find({}).then(sisters => {
+                            Family.find({}).then( families => {
+                                res.render("sister/new", { sisters, families,message })
+                            })
                         })
-                    })
-                }
-                else{
-                    Sister.create({firstname,lastname,year,pledgeclass,family,big})
-                    .then(littlesister => {
-                        Sister.findByIdAndUpdate(littlesister['big'], {$push: {little: littlesister['_id']}})
-                        .then(() => {
-                            familyToUpdate.members.push(littlesister)
-                            res.redirect(`/sisters/${littlesister._id}`)
-                            familyToUpdate.save(err => console.log(err))
+                    }
+                    //Attach a little to a big
+                    else{
+                        Sister.create({firstname,lastname,year,pledgeclass,family,big})
+                        .then(littlesister => {
+                            Sister.findByIdAndUpdate(littlesister['big'], {$push: {little: littlesister['_id']}})
+                            .then(() => {
+                                familyToUpdate.members.push(littlesister)
+                                res.redirect(`/sisters/${littlesister._id}`)
+                                familyToUpdate.save(err => console.log(err))
+                            })
                         })
-                    })
-                }
-            })
+                    }
+                })
+            }
+            //Handle creating the first Sister in the database (or when re-populating)
+            else {
+                Sister.create({firstname,lastname,year,pledgeclass,family})
+                .then((littlesister) => {
+                    familyToUpdate.members.push(littlesister)
+                    res.redirect(`/sisters/${littlesister._id}`)
+                })
+            }
         })
     },
 
