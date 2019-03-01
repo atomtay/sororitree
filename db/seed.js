@@ -25,11 +25,11 @@ Family.deleteMany({}).then(
     }).then(family => {
         Promise.all([
             Sister.create({
-                firstname: "Leah",
-                lastname: "Kesselman",
+                firstname: "Briana",
+                lastname: "Levine",
                 family: family.name,
-                pledgeclass: "Alpha Sigma",
-                year: "2017-05"
+                pledgeclass: "Alpha Pi",
+                year: "2016-05"
             }).then(sister => {
                 family.members.push(sister)
             })
