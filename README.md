@@ -56,4 +56,5 @@ As it stands, each sister can have one big and one little. At least in my chapte
 * Thanks to my General Assembly instructors, [Zakk Fleishmann](https://github.com/ZakkMan) and [Hammad Malik](https://github.com/tomatohammado), for their ongoing support, knowledge, and encouragement. 
 * And of course, so many thanks in IIKE to my own home chapter of [Gamma Phi Beta at the University of Rochester](http://rochestergammaphi.weebly.com/). You inspired this project and continue to push me to aspire towards [the highest type of womanhood](http://gammaphibetahistory.org/to-inspire-the-highest-type-of-womanhood/), both personally and professionally.
 
-![alt text]((https://github.com/annabelle-t-taylor/sororitree/tree/master/public/chapter.jpg "The Stardust family of Gamma Phi Beta, 2017"))
+![alt text](https://github.com/annabelle-t-taylor/sororitree/blob/master/public/chapter.jpg "The Stardust family of Gamma Phi Beta, 2017")
+*The Stardust family of Gamma Phi Beta, 2017*
