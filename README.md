@@ -11,7 +11,7 @@ node db/seed.js
 node index.js
 ```
 
-And open *localhost:1874* in your web browser of choice. If you'd like to host your local version on another port, you can edit that on line 12 of **/index.js**.
+Open app in *localhost:1874* in your web browser of choice. If you'd like to host your local version on another port, you can edit that on line 12 of **/index.js**.
 
 ## Technologies Used
 * HTML5
@@ -28,13 +28,13 @@ And open *localhost:1874* in your web browser of choice. If you'd like to host y
     * [Nodemon](https://www.npmjs.com/package/nodemon) (not necessary to run, but helpful in development)
 
 ## Development Process
-I spent a solid two hours planning this project's architecture, and in retrospect I could have saved a lot of headache by spending an additional couple of hours. Writing out my RESTful routing table made the basic MVC setup a breeze, but writing out the controller callback functions proved far more difficult. For example, deleting a sister doesn't just involve removing one object from my database--as I describe below, it also involves updating two other sisters *and* a family instance. Needless to say, more pseudo-code (and patience) would have served me well.
+I spent a solid two hours planning this project's architecture, and in retrospect I could have saved a lot of headache by spending an additional couple of hours. Writing out my RESTful routing table made the basic MVC setup a breeze, but writing out the controller callback functions proved far more difficult. For example, deleting a sister doesn't just involve removing one object from my database—as I describe below, it also involves updating two other sisters *and* a family instance. Needless to say, more pseudo-code (and patience) would have served me well.
 
 Throughout the actual development, I found GitHub issues and branching to be incredibly helpful. Whenver I had a wandering thought of "Oh, it'd be neat to implement XYZ" or "I should really refactor ABC," I quickly wrote it down as an issue. This allowed me to focus on one thing at a time without worry that I might forget something later. Further, branching let me get a bit messy with my code when trying to implement a new feature; there were multiple points where I branched off, completely broke everything, and was able to safely go back to the master branch to try something else for awhile instead of working in circles.
 
 ## Highlights
 ### Self-Referential Models
-If you take a look at **/models/Sister.js** you'll notice that each sister contains references to two other instances of the Sister model. This is to ensure that each sister is linked to their Big and, if applicable, their Little. I only link the ObjectId, meaning I only need to maintain one instance of each sister. This makes updating sister information much simpler, but did complicate things when deleting a sister. The nested queries in the delete callback of my **/controllers/sister.js** file handle this special case: whenever a sister is deleted, find the IDs of her Big and her Little. Update the Big and Little's respective fields to link these two sisters, thus repairing the lineage.
+If you take a look at **/models/Sister.js** you'll notice that each sister contains references to two other instances of the Sister model. This is to ensure that each sister is linked to their Big and, if applicable, their Little. I only link the ObjectId, meaning I only need to maintain one instance of each sister. This makes updating sister information much simpler, but does complicate matters when deleting a sister. The nested queries in the delete callback of my **/controllers/sister.js** file handle this special case: whenever a sister is deleted, find the IDs of her Big and her Little. Update the Big and Little's respective fields to link these two sisters, thus repairing the lineage.
 
 In less abstract terms, consider this example: Alice is Barbara's big, and Barbara is Claire's big. Barbara disaffiliates, so Alice becomes Claire's new big and Claire is Alice's little.
 

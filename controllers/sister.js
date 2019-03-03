@@ -47,12 +47,9 @@ module.exports = {
             }
             //Handle creating the first Sister in the database (or when re-populating)
             else {
-                console.log("1st: " + familyToUpdate.members)
                 Sister.create({firstname,lastname,year,pledgeclass,family})
                 .then((littlesister) => {
-                    console.log("2nd " +familyToUpdate.members)
                     familyToUpdate.members.push(littlesister)
-                    //console.log(familytoUpdate.members.length)
                     res.redirect(`/sisters/${littlesister._id}`)
                 })
             }
@@ -95,10 +92,8 @@ module.exports = {
             .then(() => {
                 Sister.findByIdAndUpdate(sister.little, {big: sister.big})
                 .then(() => {
-                    console.log(sister.id)
                     Family.findOneAndUpdate({name: sister.family}, {$pull: {members: {id: sister.id}}}, {new: true})
                     .then((family) => {
-                        console.log(family.members.length)
                         res.redirect("/sisters")
                     })
                 })
