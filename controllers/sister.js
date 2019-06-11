@@ -51,6 +51,7 @@ module.exports = {
                 .then((littlesister) => {
                     familyToUpdate.members.push(littlesister)
                     res.redirect(`/sisters/${littlesister._id}`)
+                    familyToUpdate.save(err => console.log(err))
                 })
             }
         })
