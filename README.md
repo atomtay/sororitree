@@ -2,7 +2,7 @@
 A web-based GUI for organizing sorority sisters and keeping track of Big/Little relationships as a chapter grows.
 
 ## Installation
-To access the public-facing version of this application (currently containing my alma mater's chapter), simply visit [sororitree.herokuapp.com](https://sororitree.herokuapp.com/). Alternatively, you can download and host your own local version by following these command line prompts:
+You can download and host your own local version by following these command line prompts:
 
 ```git clone https://github.com/annabelle-t-taylor/sororitree.git
 cd sororitree
